@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://c8vov7b1yud06"]
 
-[ext_resource type="Texture2D" uid="uid://dgq7bcwoev5xm" path="res://Assets/Backgrounds/PlanoDeFundoTelaInicial.png" id="1_55vlj"]
-[ext_resource type="Texture2D" uid="uid://c1v24ccgpn4o8" path="res://Assets/Botoes/D0KjKz.png" id="1_b1rrf"]
+[ext_resource type="Texture2D" uid="uid://dxkfqb8g1walt" path="res://Assets/Backgrounds/PlanoDeFundoTelaInicial.png" id="1_55vlj"]
+[ext_resource type="Texture2D" uid="uid://ihft8tfxv01o" path="res://Assets/Botoes/D0KjKz.png" id="1_b1rrf"]
+[ext_resource type="Script" uid="uid://bkx1t36so1rc7" path="res://Cenas/tela_inicial.gd" id="1_ouhyk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_55vlj"]
 atlas = ExtResource("1_b1rrf")
@@ -72,6 +73,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ouhyk")
 
 [node name="PlanoDeFundoTelaInicial" type="Sprite2D" parent="." unique_id=163153366]
 position = Vector2(576.00006, 323.99997)
@@ -131,3 +133,5 @@ position = Vector2(121, 39)
 scale = Vector2(0.5447918, 0.54166657)
 sprite_frames = SubResource("SpriteFrames_ouhyk")
 animation = &"Options"
+
+[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
