@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dbk14i1qnvt7g"]
+
+[ext_resource type="Script" uid="uid://b0hmo85v3e0de" path="res://Cenas/Scripts/bolaprincipal.gd" id="1_qwfiq"]
+[ext_resource type="Texture2D" uid="uid://v86vlenc7076" path="res://Assets/Bolinha Jogador/Cópia de Pan_Blue_Circle.png" id="2_f8et5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2malx"]
+radius = 9.0
+
+[node name="bolaprincipal" type="CharacterBody2D" unique_id=184070132]
+script = ExtResource("1_qwfiq")
+
+[node name="CópiaDePanBlueCircle" type="Sprite2D" parent="." unique_id=438867432]
+scale = Vector2(0.028803455, 0.028064951)
+texture = ExtResource("2_f8et5")
+
+[node name="colisaobolaprincipal" type="CollisionShape2D" parent="." unique_id=527685084]
+shape = SubResource("CircleShape2D_2malx")

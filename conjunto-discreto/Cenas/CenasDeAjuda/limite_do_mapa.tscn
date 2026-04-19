@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://dbx3tbwcou61y"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_l1vnu"]
+a = Vector2(-4, 1)
+b = Vector2(1152, 1)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_jouq0"]
+a = Vector2(1074, 626)
+b = Vector2(1076, -22)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_cvbl2"]
+a = Vector2(0, 2)
+b = Vector2(-1, 646)
+
+[node name="LimiteDoMapa" type="RigidBody2D" unique_id=804649947]
+mass = 0.001
+gravity_scale = 0.0
+
+[node name="Baixo" type="CollisionShape2D" parent="." unique_id=1961206831]
+light_mask = 2
+position = Vector2(10, 644)
+shape = SubResource("SegmentShape2D_l1vnu")
+
+[node name="Cima" type="CollisionShape2D" parent="." unique_id=1791892056]
+light_mask = 2
+shape = SubResource("SegmentShape2D_l1vnu")
+
+[node name="Direita" type="CollisionShape2D" parent="." unique_id=1367123634]
+light_mask = 2
+position = Vector2(76, 22)
+shape = SubResource("SegmentShape2D_jouq0")
+
+[node name="Esquerda" type="CollisionShape2D" parent="." unique_id=1636213332]
+light_mask = 2
+shape = SubResource("SegmentShape2D_cvbl2")
