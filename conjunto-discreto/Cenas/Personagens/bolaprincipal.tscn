@@ -15,3 +15,11 @@ texture = ExtResource("2_f8et5")
 
 [node name="colisaobolaprincipal" type="CollisionShape2D" parent="." unique_id=527685084]
 shape = SubResource("CircleShape2D_2malx")
+
+[node name="Formas" type="Node2D" parent="." unique_id=2122343582]
+
+[node name="Estrela" type="Sprite2D" parent="Formas" unique_id=1496083684]
+
+[node name="Quadrado" type="Sprite2D" parent="Formas" unique_id=1955771387]
+
+[node name="Triangulo" type="Sprite2D" parent="Formas" unique_id=1170833160]
