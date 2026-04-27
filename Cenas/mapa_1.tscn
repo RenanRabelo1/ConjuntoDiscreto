@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dcww2w66ctjod"]
+
+[ext_resource type="Texture2D" uid="uid://ddfckqhkeda56" path="res://Assets/Fundo/background.png" id="1_eul7t"]
+[ext_resource type="PackedScene" uid="uid://dbk14i1qnvt7g" path="res://Cenas/Personagens/bolaprincipal.tscn" id="2_uqq6c"]
+[ext_resource type="PackedScene" uid="uid://dbx3tbwcou61y" path="res://Cenas/CenasDeAjuda/limite_do_mapa.tscn" id="2_y7wac"]
+
+[node name="mapa_1" type="Node" unique_id=580123955]
+
+[node name="LimiteDoMapa" parent="." unique_id=804649947 instance=ExtResource("2_y7wac")]
+
+[node name="Background2" type="Sprite2D" parent="." unique_id=2138028328]
+position = Vector2(685, 389)
+scale = Vector2(2.0958333, 2.35)
+texture = ExtResource("1_eul7t")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=2040170352]
+position = Vector2(576, 324)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_eul7t")
+
+[node name="bolaprincipal" parent="." unique_id=184070132 instance=ExtResource("2_uqq6c")]
+position = Vector2(513, 281)
+
+[node name="Camera2D" type="Camera2D" parent="bolaprincipal" unique_id=6604230]
+position = Vector2(-1, 1)
+zoom = Vector2(2, 2)
