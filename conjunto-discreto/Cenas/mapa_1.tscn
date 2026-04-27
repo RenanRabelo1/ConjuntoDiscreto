@@ -1,25 +1,23 @@
 [gd_scene format=3 uid="uid://dcww2w66ctjod"]
 
-[ext_resource type="Texture2D" uid="uid://ddfckqhkeda56" path="res://Assets/Fundo/background.png" id="1_eul7t"]
+[ext_resource type="PackedScene" uid="uid://bkl2glaq5jo2b" path="res://Cenas/Personagens/outro_conjunto.tscn" id="2_on0bv"]
 [ext_resource type="PackedScene" uid="uid://dbk14i1qnvt7g" path="res://Cenas/Personagens/bolaprincipal.tscn" id="2_uqq6c"]
 [ext_resource type="PackedScene" uid="uid://dbx3tbwcou61y" path="res://Cenas/CenasDeAjuda/limite_do_mapa.tscn" id="2_y7wac"]
+[ext_resource type="Texture2D" uid="uid://y4obepywxl6x" path="res://Assets/Fundo/background_white.png" id="3_uqq6c"]
 
 [node name="mapa_1" type="Node" unique_id=580123955]
 
+[node name="BackgroundWhite" type="Sprite2D" parent="." unique_id=445888237]
+position = Vector2(568, 319)
+texture = ExtResource("3_uqq6c")
+
 [node name="LimiteDoMapa" parent="." unique_id=804649947 instance=ExtResource("2_y7wac")]
 
-[node name="Background2" type="Sprite2D" parent="." unique_id=2138028328]
-position = Vector2(685, 389)
-scale = Vector2(2.0958333, 2.35)
-texture = ExtResource("1_eul7t")
-
-[node name="Background" type="Sprite2D" parent="." unique_id=2040170352]
-position = Vector2(576, 324)
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("1_eul7t")
+[node name="outro_conjunto" parent="." unique_id=1546861605 instance=ExtResource("2_on0bv")]
+position = Vector2(640, 319)
 
 [node name="bolaprincipal" parent="." unique_id=184070132 instance=ExtResource("2_uqq6c")]
-position = Vector2(513, 281)
+position = Vector2(296, 248)
 
 [node name="Camera2D" type="Camera2D" parent="bolaprincipal" unique_id=6604230]
 position = Vector2(-1, 1)

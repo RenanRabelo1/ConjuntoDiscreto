@@ -2,14 +2,14 @@ extends CharacterBody2D
 
 # --- VARIÁVEIS E NÓS ---
 @export var speed: float = 300.0
-const UNIVERSO = ["estrela", "quadrado", "triangulo"]
+const UNIVERSO = ["estrela", "quadrado", "coracao"]
 
 var meu_conjunto: Array = [] # Começa vazio!
 var poder_ativo: String = "uniao"
 
 @onready var sprite_estrela = $Formas/Estrela
 @onready var sprite_quadrado = $Formas/Quadrado
-@onready var sprite_triangulo = $Formas/Triangulo
+@onready var sprite_coracao = $Formas/Coracao
 
 
 func _ready() -> void:
@@ -25,7 +25,6 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 	else:
 		velocity = Vector2.ZERO
-
 
 
 func interacao(outro_conjunto: Array) -> void:
@@ -45,10 +44,21 @@ func interacao(outro_conjunto: Array) -> void:
 		
 	print("Meu conjunto atual: ", meu_conjunto)
 	
-	
 	atualizar_visual()
 
+# --- NOVO VISUAL COM SHOW/HIDE ---
 func atualizar_visual() -> void:
-	sprite_estrela.visible = meu_conjunto.has("estrela")
-	sprite_quadrado.visible = meu_conjunto.has("quadrado")
-	sprite_triangulo.visible = meu_conjunto.has("triangulo")
+	if meu_conjunto.has("estrela"):
+		sprite_estrela.show()
+	else:
+		sprite_estrela.hide()
+		
+	if meu_conjunto.has("quadrado"):
+		sprite_quadrado.show()
+	else:
+		sprite_quadrado.hide()
+		
+	if meu_conjunto.has("coracao"):
+		sprite_coracao.show()
+	else:
+		sprite_coracao.hide()

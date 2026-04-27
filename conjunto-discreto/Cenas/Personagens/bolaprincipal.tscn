@@ -1,16 +1,19 @@
 [gd_scene format=3 uid="uid://dbk14i1qnvt7g"]
 
 [ext_resource type="Script" uid="uid://b0hmo85v3e0de" path="res://Cenas/Scripts/bolaprincipal.gd" id="1_qwfiq"]
-[ext_resource type="Texture2D" uid="uid://v86vlenc7076" path="res://Assets/Bolinha Jogador/Cópia de Pan_Blue_Circle.png" id="2_f8et5"]
+[ext_resource type="Texture2D" uid="uid://cpbrw0k3x27dd" path="res://Assets/Simbolos/Circulo.png" id="2_f8et5"]
+[ext_resource type="Texture2D" uid="uid://cr47hhd5olexh" path="res://Assets/Simbolos/Estrela 3.png" id="3_qxp3u"]
+[ext_resource type="Texture2D" uid="uid://bbq06durexv56" path="res://Assets/Simbolos/Coracao 3.png" id="4_ynhhj"]
+[ext_resource type="Texture2D" uid="uid://wc6m5hhhddko" path="res://Assets/Simbolos/Quadrado 2.png" id="5_pds2f"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2malx"]
-radius = 9.0
+radius = 13.0
 
 [node name="bolaprincipal" type="CharacterBody2D" unique_id=184070132]
 script = ExtResource("1_qwfiq")
 
-[node name="CópiaDePanBlueCircle" type="Sprite2D" parent="." unique_id=438867432]
-scale = Vector2(0.028803455, 0.028064951)
+[node name="Circulo" type="Sprite2D" parent="." unique_id=1349076786]
+scale = Vector2(0.019375002, 0.01875)
 texture = ExtResource("2_f8et5")
 
 [node name="colisaobolaprincipal" type="CollisionShape2D" parent="." unique_id=527685084]
@@ -19,7 +22,19 @@ shape = SubResource("CircleShape2D_2malx")
 [node name="Formas" type="Node2D" parent="." unique_id=2122343582]
 
 [node name="Estrela" type="Sprite2D" parent="Formas" unique_id=1496083684]
+visible = false
+position = Vector2(-5.9604645e-08, -8)
+scale = Vector2(0.006958007, 0.0064086914)
+texture = ExtResource("3_qxp3u")
 
-[node name="Quadrado" type="Sprite2D" parent="Formas" unique_id=1955771387]
+[node name="Coracao" type="Sprite2D" parent="Formas" unique_id=267617230]
+visible = false
+position = Vector2(-6, 1)
+scale = Vector2(0.020507814, 0.015624993)
+texture = ExtResource("4_ynhhj")
 
-[node name="Triangulo" type="Sprite2D" parent="Formas" unique_id=1170833160]
+[node name="Quadrado" type="Sprite2D" parent="Formas" unique_id=1638136510]
+visible = false
+position = Vector2(8, 1.0000002)
+scale = Vector2(0.008404643, 0.006647309)
+texture = ExtResource("5_pds2f")
