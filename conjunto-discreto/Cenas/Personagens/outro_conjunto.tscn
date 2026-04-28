@@ -1,11 +1,40 @@
 [gd_scene format=3 uid="uid://bkl2glaq5jo2b"]
 
-[ext_resource type="Script" uid="uid://hyt0wcbgkfgf" path="res://area_2d.gd" id="1_ntml4"]
+[ext_resource type="Script" uid="uid://hyt0wcbgkfgf" path="res://Cenas/Scripts/area_2d.gd" id="1_ntml4"]
+[ext_resource type="Texture2D" uid="uid://cpbrw0k3x27dd" path="res://Assets/Simbolos/Circulo.png" id="2_oxe18"]
+[ext_resource type="Texture2D" uid="uid://bbq06durexv56" path="res://Assets/Simbolos/Coracao 3.png" id="3_3v1yd"]
+[ext_resource type="Texture2D" uid="uid://cr47hhd5olexh" path="res://Assets/Simbolos/Estrela 3.png" id="4_8qf58"]
+[ext_resource type="Texture2D" uid="uid://wc6m5hhhddko" path="res://Assets/Simbolos/Quadrado 2.png" id="5_50ol7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wxx78"]
+radius = 94.04786
 
 [node name="outro_conjunto" type="Area2D" unique_id=1546861605]
 script = ExtResource("1_ntml4")
 
+[node name="Circulo" type="Sprite2D" parent="." unique_id=1566913473]
+scale = Vector2(0.135, 0.125)
+texture = ExtResource("2_oxe18")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2135571821]
 shape = SubResource("CircleShape2D_wxx78")
+
+[node name="Formas" type="Node2D" parent="." unique_id=268356574]
+
+[node name="Coracao" type="Sprite2D" parent="Formas" unique_id=1837462128]
+visible = false
+position = Vector2(-49, 4)
+scale = Vector2(0.115234375, 0.08984375)
+texture = ExtResource("3_3v1yd")
+
+[node name="Estrela" type="Sprite2D" parent="Formas" unique_id=1209538740]
+visible = false
+position = Vector2(-1, -53)
+scale = Vector2(0.05029297, 0.05126953)
+texture = ExtResource("4_8qf58")
+
+[node name="Quadrado" type="Sprite2D" parent="Formas" unique_id=1063130247]
+visible = false
+position = Vector2(49.999996, -2)
+scale = Vector2(0.04492665, 0.038202934)
+texture = ExtResource("5_50ol7")
