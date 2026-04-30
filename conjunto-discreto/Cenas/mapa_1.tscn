@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dbk14i1qnvt7g" path="res://Cenas/Personagens/bolaprincipal.tscn" id="2_uqq6c"]
 [ext_resource type="PackedScene" uid="uid://dbx3tbwcou61y" path="res://Cenas/CenasDeAjuda/limite_do_mapa.tscn" id="2_y7wac"]
 [ext_resource type="Texture2D" uid="uid://y4obepywxl6x" path="res://Assets/Fundo/background_white.png" id="3_uqq6c"]
+[ext_resource type="PackedScene" path="res://Cenas/UI.tscn" id="5_on0bv"]
 
 [node name="mapa_1" type="Node" unique_id=580123955]
 
@@ -22,3 +23,5 @@ position = Vector2(296, 248)
 [node name="Camera2D" type="Camera2D" parent="bolaprincipal" unique_id=6604230]
 position = Vector2(-1, 1)
 zoom = Vector2(2, 2)
+
+[node name="Control" parent="." unique_id=1891966967 instance=ExtResource("5_on0bv")]

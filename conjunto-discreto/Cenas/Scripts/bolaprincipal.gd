@@ -42,6 +42,14 @@ func interacao(outro_conjunto: Array) -> void:
 		meu_conjunto = lista
 		print("Fiz intersecção! Agora tenho só ", meu_conjunto)
 		
+		
+	elif poder_ativo == "complemento":
+		var novo_conjunto = []
+		for elemento in UNIVERSO:
+			if not meu_conjunto.has(elemento):
+				novo_conjunto.append(elemento)
+		meu_conjunto = novo_conjunto
+		
 	print("Meu conjunto atual: ", meu_conjunto)
 	
 	atualizar_visual()

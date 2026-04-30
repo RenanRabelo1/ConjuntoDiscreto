@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://d4ki8g5clbdt1"]
+
+[ext_resource type="Script" path="res://Cenas/ui.gd" id="1_jw7uh"]
+[ext_resource type="Texture2D" path="res://Cenas/Botoes/uniao_atlas_texture.tres" id="2_b0mts"]
+[ext_resource type="Texture2D" path="res://Cenas/Botoes/interseccao_atlas.tres" id="3_kbfcp"]
+[ext_resource type="Texture2D" path="res://Cenas/Botoes/diferenca_atlas_texture.tres" id="4_8jotl"]
+
+[node name="Control" type="Control" unique_id=1891966967]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jw7uh")
+
+[node name="ButtonUniao" type="TextureButton" parent="." unique_id=162129856]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 0
+offset_left = -150.0
+offset_top = -1194.0
+offset_right = -50.0
+offset_bottom = -1094.0
+texture_normal = ExtResource("2_b0mts")
+ignore_texture_size = true
+stretch_mode = 3
+
+[node name="ButtonInterseccao" type="TextureButton" parent="." unique_id=1768469258]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 0
+offset_left = -90.0
+offset_top = -1194.0
+offset_right = 10.0
+offset_bottom = -1094.0
+texture_normal = ExtResource("3_kbfcp")
+ignore_texture_size = true
+stretch_mode = 3
+
+[node name="ButtonSubConjuntos" type="TextureButton" parent="." unique_id=238428575]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 0
+offset_left = -30.0
+offset_top = -1194.0
+offset_right = 70.0
+offset_bottom = -1094.0
+texture_normal = ExtResource("4_8jotl")
+ignore_texture_size = true
+stretch_mode = 3
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=941966106]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1492031901]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control" unique_id=1084652379]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1242.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="VBoxContainer - Objetivo _ Poderes" type="VBoxContainer" parent="CanvasLayer/Control/MarginContainer" unique_id=75438190]
+layout_mode = 2
+
+[node name="PanelContainer - Objetivo" type="PanelContainer" parent="CanvasLayer/Control/MarginContainer/VBoxContainer - Objetivo _ Poderes" unique_id=1808167069]
+layout_mode = 2
+
+[node name="HBoxContainer - Icones Objetivo" type="HBoxContainer" parent="CanvasLayer/Control/MarginContainer/VBoxContainer - Objetivo _ Poderes/PanelContainer - Objetivo" unique_id=1576785874]
+layout_mode = 2
+
+[node name="Control - Espaçador" type="Control" parent="CanvasLayer/Control/MarginContainer/VBoxContainer - Objetivo _ Poderes" unique_id=304527341]
+layout_mode = 2
+
+[connection signal="pressed" from="ButtonUniao" to="." method="_on_button_uniao_pressed"]
+[connection signal="pressed" from="ButtonInterseccao" to="." method="_on_button_interseccao_pressed"]
+[connection signal="pressed" from="ButtonSubConjuntos" to="." method="_on_button_diferenca_pressed"]
