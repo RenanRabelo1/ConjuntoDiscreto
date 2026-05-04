@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dcww2w66ctjod"]
+
+[ext_resource type="Texture2D" uid="uid://b4qad0uk4jhr3" path="res://Assets/Fundos/Cópia de background(1).png" id="1_y7wac"]
+[ext_resource type="PackedScene" uid="uid://bkl2glaq5jo2b" path="res://Cenas/Personagens/outro_conjunto.tscn" id="2_on0bv"]
+[ext_resource type="PackedScene" uid="uid://dbk14i1qnvt7g" path="res://Cenas/Personagens/bolaprincipal.tscn" id="2_uqq6c"]
+[ext_resource type="PackedScene" uid="uid://dbx3tbwcou61y" path="res://Cenas/CenasDeAjuda/limite_do_mapa.tscn" id="2_y7wac"]
+[ext_resource type="PackedScene" uid="uid://0jnjky2ibjko" path="res://Cenas/UI.tscn" id="5_on0bv"]
+
+[node name="mapa_1" type="Node" unique_id=580123955]
+
+[node name="BackgroundWhite" type="Sprite2D" parent="." unique_id=445888237]
+position = Vector2(589.99994, 320)
+scale = Vector2(0.8083334, 0.95925933)
+texture = ExtResource("1_y7wac")
+
+[node name="LimiteDoMapa" parent="." unique_id=804649947 instance=ExtResource("2_y7wac")]
+
+[node name="outro_conjunto" parent="." unique_id=1546861605 instance=ExtResource("2_on0bv")]
+position = Vector2(640, 319)
+
+[node name="bolaprincipal" parent="." unique_id=184070132 instance=ExtResource("2_uqq6c")]
+position = Vector2(296, 248)
+
+[node name="Camera2D" type="Camera2D" parent="bolaprincipal" unique_id=6604230]
+position = Vector2(10, 15)
+zoom = Vector2(2, 2)
+
+[node name="Control" parent="bolaprincipal/Camera2D" unique_id=1891966967 instance=ExtResource("5_on0bv")]

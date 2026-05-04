@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://dbk14i1qnvt7g"]
+
+[ext_resource type="Script" uid="uid://b0hmo85v3e0de" path="res://Cenas/Scripts/bolaprincipal.gd" id="1_qwfiq"]
+[ext_resource type="Texture2D" uid="uid://djm5bmop047bj" path="res://Assets/Símbolos/Círculo (Bolinha)/Cópia de circle-dotted-image-background-png-10.png" id="2_f8et5"]
+[ext_resource type="Texture2D" uid="uid://coihcc848hby6" path="res://Assets/Símbolos/Estrela/Cópia de Estrela 3.png" id="3_m6tua"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2malx"]
+radius = 32.55764
+
+[node name="bolaprincipal" type="CharacterBody2D" unique_id=184070132]
+script = ExtResource("1_qwfiq")
+
+[node name="Circulo" type="Sprite2D" parent="." unique_id=1349076786]
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("2_f8et5")
+
+[node name="colisaobolaprincipal" type="CollisionShape2D" parent="." unique_id=527685084]
+shape = SubResource("CircleShape2D_2malx")
+
+[node name="Formas" type="Node2D" parent="." unique_id=2122343582]
+position = Vector2(0, -3)
+
+[node name="Estrela" type="Sprite2D" parent="Formas" unique_id=1496083684]
+position = Vector2(-5.9604645e-08, -8)
+scale = Vector2(0.006958007, 0.0064086914)
+texture = ExtResource("3_m6tua")
+
+[node name="Coracao" type="Sprite2D" parent="Formas" unique_id=267617230]
+visible = false
+position = Vector2(-6, 1)
+scale = Vector2(0.020507814, 0.015624993)
+
+[node name="Quadrado" type="Sprite2D" parent="Formas" unique_id=1638136510]
+visible = false
+position = Vector2(8, 1.0000002)
+scale = Vector2(0.008404643, 0.006647309)
