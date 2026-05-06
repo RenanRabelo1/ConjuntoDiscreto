@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://b0hmo85v3e0de" path="res://Cenas/Scripts/bolaprincipal.gd" id="1_qwfiq"]
 [ext_resource type="Texture2D" uid="uid://djm5bmop047bj" path="res://Assets/Símbolos/Círculo (Bolinha)/Cópia de circle-dotted-image-background-png-10.png" id="2_f8et5"]
 [ext_resource type="Texture2D" uid="uid://coihcc848hby6" path="res://Assets/Símbolos/Estrela/Cópia de Estrela 3.png" id="3_m6tua"]
+[ext_resource type="Texture2D" uid="uid://kqwfx7lpta1o" path="res://Assets/Símbolos/Triângulo/Colorful-Triangle-PNG-Free-Download.png" id="3_qxp3u"]
+[ext_resource type="Texture2D" uid="uid://ct06rd2ewjsog" path="res://Assets/Símbolos/Quadrado/7263.png" id="5_ynhhj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2malx"]
 radius = 32.55764
@@ -20,17 +22,17 @@ shape = SubResource("CircleShape2D_2malx")
 [node name="Formas" type="Node2D" parent="." unique_id=2122343582]
 position = Vector2(0, -3)
 
+[node name="Triangulo" type="Sprite2D" parent="Formas" unique_id=267617230]
+position = Vector2(-7.125, 1)
+scale = Vector2(0.016113283, 0.015624993)
+texture = ExtResource("3_qxp3u")
+
 [node name="Estrela" type="Sprite2D" parent="Formas" unique_id=1496083684]
 position = Vector2(-5.9604645e-08, -8)
 scale = Vector2(0.006958007, 0.0064086914)
 texture = ExtResource("3_m6tua")
 
-[node name="Coracao" type="Sprite2D" parent="Formas" unique_id=267617230]
-visible = false
-position = Vector2(-6, 1)
-scale = Vector2(0.020507814, 0.015624993)
-
 [node name="Quadrado" type="Sprite2D" parent="Formas" unique_id=1638136510]
-visible = false
-position = Vector2(8, 1.0000002)
-scale = Vector2(0.008404643, 0.006647309)
+position = Vector2(6.982886, 1.0000002)
+scale = Vector2(0.0062856553, 0.006647309)
+texture = ExtResource("5_ynhhj")

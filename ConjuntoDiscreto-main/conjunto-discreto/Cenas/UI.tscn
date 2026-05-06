@@ -2,21 +2,23 @@
 
 [ext_resource type="Script" uid="uid://cppm4aegjqc4q" path="res://Cenas/ui.gd" id="1_jw7uh"]
 [ext_resource type="Texture2D" uid="uid://tamavkn4eirg" path="res://Cenas/Botoes/uniao_atlas_texture.tres" id="2_b0mts"]
-[ext_resource type="Texture2D" uid="uid://bbjeu7e16vd7h" path="res://Assets/Interface (UI-HUD)/Botões/botao_uniao.jpg" id="3_7hnlb"]
 [ext_resource type="Texture2D" uid="uid://dqx3itlpd7rxy" path="res://Cenas/Botoes/interseccao_atlas.tres" id="3_kbfcp"]
 [ext_resource type="Texture2D" uid="uid://be7d6xjvqcekr" path="res://Cenas/Botoes/diferenca_atlas_texture.tres" id="4_8jotl"]
-[ext_resource type="Texture2D" uid="uid://bcfc5ktqef5ja" path="res://Assets/Interface (UI-HUD)/Botões/botao_intersecao.jpg" id="5_cbvk5"]
-[ext_resource type="Texture2D" uid="uid://c65w2kwubcgu2" path="res://Assets/Interface (UI-HUD)/Botões/botao_diferenca.jpg" id="7_t2pyk"]
+[ext_resource type="Texture2D" uid="uid://clbojiqw0rpsq" path="res://Assets/Interface (UI-HUD)/Botões/botao_uniao (1).jpg" id="4_g0crw"]
+[ext_resource type="Texture2D" uid="uid://dmvf8suhxglgq" path="res://Assets/Interface (UI-HUD)/Botões/botao_intersecao (1).jpg" id="6_4db0q"]
+[ext_resource type="Texture2D" uid="uid://dnevcfjlvd0oq" path="res://Assets/Interface (UI-HUD)/Botões/botao_diferenca (1).jpg" id="8_c4641"]
 [ext_resource type="FontFile" uid="uid://e126paqgfhop" path="res://Assets/Interface (UI-HUD)/Fontes/Cópia de Fredoka-VariableFont_wdth,wght.ttf" id="8_cbvk5"]
+[ext_resource type="Texture2D" uid="uid://cvc08eyecvt2e" path="res://Assets/Interface (UI-HUD)/Botões/botao_complemento.jpg" id="9_dpfk5"]
+[ext_resource type="Texture2D" uid="uid://qq1nvsd3stpp" path="res://Assets/Interface (UI-HUD)/Botões/botao_subconjunto.jpg" id="10_0cqhm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t2pyk"]
 bg_color = Color(0.093160845, 0.093160845, 0.09316083, 0.54901963)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_g0crw"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_t2pyk"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_7hnlb")
+"texture": ExtResource("4_g0crw")
 }],
 "loop": true,
 "name": &"Uniao",
@@ -27,7 +29,7 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_cbvk5")
+"texture": ExtResource("6_4db0q")
 }],
 "loop": true,
 "name": &"Intersecao",
@@ -38,10 +40,32 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("7_t2pyk")
+"texture": ExtResource("8_c4641")
 }],
 "loop": true,
 "name": &"Diferenca",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hket6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_dpfk5")
+}],
+"loop": true,
+"name": &"Complemento",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mfxmm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_0cqhm")
+}],
+"loop": true,
+"name": &"Subconjunto",
 "speed": 5.0
 }]
 
@@ -62,17 +86,24 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Label" type="Label" parent="CanvasLayer/Control" unique_id=857539799]
+[node name="LabelMissao" type="Label" parent="CanvasLayer/Control" unique_id=857539799]
 layout_mode = 0
-offset_left = 52.0
-offset_top = 510.0
-offset_right = 396.0
-offset_bottom = 565.0
+offset_left = 24.0
+offset_top = 431.0
+offset_right = 368.0
+offset_bottom = 486.0
 theme_override_colors/font_color = Color(0.5647059, 1, 0.85490197, 1)
 theme_override_fonts/font = ExtResource("8_cbvk5")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxFlat_t2pyk")
 text = "Missão: Faça A ∪ B"
+
+[node name="LabelPontos" type="Label" parent="CanvasLayer/Control" unique_id=1117766009]
+layout_mode = 0
+offset_left = 903.0
+offset_top = 83.0
+offset_right = 1062.0
+offset_bottom = 203.0
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control" unique_id=1084652379]
 layout_mode = 1
@@ -108,9 +139,9 @@ ignore_texture_size = true
 stretch_mode = 3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Control/MarginContainer/VBoxContainer - Objetivo _ Poderes/HBoxContainer - Poderes/ButtonUniao" unique_id=1377115037]
-position = Vector2(724, 1803)
-scale = Vector2(0.4, 0.4)
-sprite_frames = SubResource("SpriteFrames_g0crw")
+position = Vector2(299.5, 1788)
+scale = Vector2(0.29875, 0.355)
+sprite_frames = SubResource("SpriteFrames_t2pyk")
 animation = &"Uniao"
 
 [node name="ButtonInterseccao" type="TextureButton" parent="CanvasLayer/Control/MarginContainer/VBoxContainer - Objetivo _ Poderes/HBoxContainer - Poderes" unique_id=1768469258]
@@ -121,8 +152,8 @@ ignore_texture_size = true
 stretch_mode = 3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Control/MarginContainer/VBoxContainer - Objetivo _ Poderes/HBoxContainer - Poderes/ButtonInterseccao" unique_id=856108747]
-position = Vector2(968, 1806)
-scale = Vector2(0.4, 0.4)
+position = Vector2(418, 1790)
+scale = Vector2(0.296, 0.35937524)
 sprite_frames = SubResource("SpriteFrames_4db0q")
 animation = &"Intersecao"
 
@@ -134,11 +165,31 @@ ignore_texture_size = true
 stretch_mode = 3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Control/MarginContainer/VBoxContainer - Objetivo _ Poderes/HBoxContainer - Poderes/ButtonDiferenca" unique_id=82332248]
-position = Vector2(120.99999, 1805.9999)
-scale = Vector2(0.4, 0.398)
+position = Vector2(537.60004, 1792.0001)
+scale = Vector2(0.29850003, 0.3687501)
 sprite_frames = SubResource("SpriteFrames_c4641")
 animation = &"Diferenca"
+
+[node name="ButtonComplemento" type="Button" parent="CanvasLayer/Control/MarginContainer/VBoxContainer - Objetivo _ Poderes/HBoxContainer - Poderes" unique_id=846153547]
+layout_mode = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Control/MarginContainer/VBoxContainer - Objetivo _ Poderes/HBoxContainer - Poderes/ButtonComplemento" unique_id=1790586915]
+position = Vector2(655.1, 1792)
+scale = Vector2(0.28974998, 0.3656249)
+sprite_frames = SubResource("SpriteFrames_hket6")
+animation = &"Complemento"
+
+[node name="ButtonSubconjunto" type="Button" parent="CanvasLayer/Control/MarginContainer/VBoxContainer - Objetivo _ Poderes/HBoxContainer - Poderes" unique_id=558609707]
+layout_mode = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Control/MarginContainer/VBoxContainer - Objetivo _ Poderes/HBoxContainer - Poderes/ButtonSubconjunto" unique_id=171601082]
+position = Vector2(843.60004, 1790.0001)
+scale = Vector2(0.2535, 0.36025006)
+sprite_frames = SubResource("SpriteFrames_mfxmm")
+animation = &"Subconjunto"
 
 [connection signal="pressed" from="CanvasLayer/Control/MarginContainer/VBoxContainer - Objetivo _ Poderes/HBoxContainer - Poderes/ButtonUniao" to="." method="_on_button_uniao_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/MarginContainer/VBoxContainer - Objetivo _ Poderes/HBoxContainer - Poderes/ButtonInterseccao" to="." method="_on_button_interseccao_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/MarginContainer/VBoxContainer - Objetivo _ Poderes/HBoxContainer - Poderes/ButtonDiferenca" to="." method="_on_button_diferenca_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/MarginContainer/VBoxContainer - Objetivo _ Poderes/HBoxContainer - Poderes/ButtonComplemento" to="." method="_on_button_complemento_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/MarginContainer/VBoxContainer - Objetivo _ Poderes/HBoxContainer - Poderes/ButtonSubconjunto" to="." method="_on_button_subconjunto_pressed"]

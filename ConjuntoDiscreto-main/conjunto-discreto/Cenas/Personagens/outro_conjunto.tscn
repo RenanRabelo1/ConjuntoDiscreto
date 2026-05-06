@@ -18,7 +18,7 @@ shape = SubResource("CircleShape2D_wxx78")
 
 [node name="Formas" type="Node2D" parent="." unique_id=268356574]
 
-[node name="Coracao" type="Sprite2D" parent="Formas" unique_id=1837462128]
+[node name="Triangulo" type="Sprite2D" parent="Formas" unique_id=1837462128]
 visible = false
 position = Vector2(-49, 4)
 scale = Vector2(0.115234375, 0.08984375)
