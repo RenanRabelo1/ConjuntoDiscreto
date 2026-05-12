@@ -1,9 +1,9 @@
 extends Area2D
 
 const UNIVERSO = ["estrela", "quadrado", "triangulo"]
-var conteudo_do_conjunto: Array = []
 
-var em_cooldown: bool = false  # Evita disparar colisão várias vezes seguidas
+var conteudo_do_conjunto: Array = []
+var em_cooldown: bool = false
 
 @onready var sprite_estrela   = $Formas/Estrela
 @onready var sprite_quadrado  = $Formas/Quadrado
@@ -28,7 +28,7 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.has_method("interacao"):
 		em_cooldown = true
 		body.interacao(conteudo_do_conjunto)
-		# Após 2s, permite nova interação e gera novo conjunto
+		# Após 2s gera novo conjunto e libera nova interação
 		await get_tree().create_timer(2.0).timeout
 		gerar_conjunto_aleatorio()
 		atualizar_visual()
@@ -38,7 +38,3 @@ func atualizar_visual() -> void:
 	sprite_estrela.visible   = conteudo_do_conjunto.has("estrela")
 	sprite_quadrado.visible  = conteudo_do_conjunto.has("quadrado")
 	sprite_triangulo.visible = conteudo_do_conjunto.has("triangulo")
-
-
-func _on_botao_subconjunto_pressed() -> void:
-	pass # Replace with function body.

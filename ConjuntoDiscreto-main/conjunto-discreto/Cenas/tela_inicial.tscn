@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cufws5fa6c16o" path="res://Assets/Interface (UI-HUD)/Botões/botao_play.jpg" id="2_x33ye"]
 [ext_resource type="Texture2D" uid="uid://bq613xgl7gka1" path="res://Assets/Interface (UI-HUD)/Botões/botao_help.jpg" id="3_0nw1j"]
 [ext_resource type="Texture2D" uid="uid://c6ij4uymxcdao" path="res://Assets/Interface (UI-HUD)/Botões/botao_quit.jpg" id="4_ubl30"]
-[ext_resource type="Texture2D" uid="uid://druy7lw7b11jn" path="res://Assets/Interface (UI-HUD)/Botões/botao_options.jpg" id="5_0bsfe"]
+[ext_resource type="FontFile" uid="uid://e126paqgfhop" path="res://Assets/Interface (UI-HUD)/Fontes/Cópia de Fredoka-VariableFont_wdth,wght.ttf" id="6_0nw1j"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_331a0"]
 animations = [{
@@ -40,22 +40,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ouhyk"]
-region = Rect2(0, 962, 480, 156)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_ouhyk"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("5_0bsfe")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ouhyk")
-}],
-"loop": true,
-"name": &"Options",
-"speed": 5.0
-}]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ubl30"]
+bg_color = Color(0.093160845, 0.093160845, 0.09316083, 0.54901963)
 
 [node name="TelaInicial" type="Control" unique_id=819170640]
 layout_mode = 3
@@ -67,8 +53,8 @@ grow_vertical = 2
 script = ExtResource("1_ouhyk")
 
 [node name="PlanoDeFundoTelaInicial" type="Sprite2D" parent="." unique_id=163153366]
-position = Vector2(575, 327.99997)
-scale = Vector2(0.59999996, 0.59814817)
+position = Vector2(575, 315.5)
+scale = Vector2(0.59999996, 0.6212963)
 texture = ExtResource("2_0nw1j")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=334997499]
@@ -111,18 +97,19 @@ scale = Vector2(0.5, 0.5444446)
 sprite_frames = SubResource("SpriteFrames_82uv6")
 animation = &"Quit"
 
-[node name="Button" type="Button" parent="." unique_id=2031082203]
-custom_minimum_size = Vector2(200, 75)
+[node name="Label" type="Label" parent="." unique_id=1313731641]
 layout_mode = 0
-offset_left = 42.0
-offset_top = 29.0
-offset_right = 283.0
-offset_bottom = 104.0
-
-[node name="ButtonOptions" type="AnimatedSprite2D" parent="Button" unique_id=854789007]
-position = Vector2(180, 37)
-scale = Vector2(0.5, 0.552)
-sprite_frames = SubResource("SpriteFrames_ouhyk")
-animation = &"Options"
+offset_left = 384.0
+offset_top = 56.0
+offset_right = 771.0
+offset_bottom = 119.0
+theme_override_colors/font_color = Color(0.5647059, 1, 0.85490197, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6862745)
+theme_override_fonts/font = ExtResource("6_0nw1j")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_ubl30")
+text = "ConjuntoDiscreto"
 
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/Help" to="." method="_on_help_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]

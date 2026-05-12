@@ -4,19 +4,21 @@
 [ext_resource type="PackedScene" uid="uid://bkl2glaq5jo2b" path="res://Cenas/Personagens/outro_conjunto.tscn" id="2_on0bv"]
 [ext_resource type="PackedScene" uid="uid://dbk14i1qnvt7g" path="res://Cenas/Personagens/bolaprincipal.tscn" id="2_uqq6c"]
 [ext_resource type="PackedScene" uid="uid://dbx3tbwcou61y" path="res://Cenas/CenasDeAjuda/limite_do_mapa.tscn" id="2_y7wac"]
+[ext_resource type="Script" uid="uid://cgflbcjm4jd7v" path="res://Cenas/Scripts/GameManager.gd" id="3_7oyco"]
 [ext_resource type="PackedScene" uid="uid://0jnjky2ibjko" path="res://Cenas/UI.tscn" id="5_on0bv"]
 
 [node name="mapa_1" type="Node" unique_id=580123955]
 
 [node name="BackgroundWhite" type="Sprite2D" parent="." unique_id=445888237]
-position = Vector2(589.99994, 320)
-scale = Vector2(0.8083334, 0.95925933)
+position = Vector2(583.5, 310.99997)
+scale = Vector2(0.8765625, 0.9962963)
 texture = ExtResource("1_y7wac")
 
 [node name="LimiteDoMapa" parent="." unique_id=804649947 instance=ExtResource("2_y7wac")]
 
-[node name="outro_conjunto" parent="." unique_id=1546861605 instance=ExtResource("2_on0bv")]
-position = Vector2(640, 319)
+[node name="GameManager" type="Node" parent="." unique_id=1654044116]
+script = ExtResource("3_7oyco")
+npc_scene = ExtResource("2_on0bv")
 
 [node name="bolaprincipal" parent="." unique_id=184070132 instance=ExtResource("2_uqq6c")]
 position = Vector2(296, 248)
