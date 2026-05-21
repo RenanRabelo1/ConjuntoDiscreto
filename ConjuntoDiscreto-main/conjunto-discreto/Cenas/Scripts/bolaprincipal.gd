@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
+# --- VARIÁVEIS E NÓS ---
 @export var speed: float = 300.0
-
 const UNIVERSO = ["estrela", "quadrado", "triangulo"]
 const SIMBOLOS  = {"estrela": "★", "quadrado": "■", "triangulo": "▲"}
 
@@ -23,13 +23,26 @@ func _ready() -> void:
 	else:
 		print("❌ UI não encontrada")
 
+# --- DETECÇÃO DO TECLADO (INPUT MAP) ---
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("uniao"):
+		_on_mudou_poder("uniao")
+	elif event.is_action_pressed("interseccao"):
+		_on_mudou_poder("interseccao")
+	elif event.is_action_pressed("diferenca"):
+		_on_mudou_poder("diferenca")
+	elif event.is_action_pressed("complemento"):
+		_on_mudou_poder("complemento")
+	elif event.is_action_pressed("subconjunto"):
+		_on_mudou_poder("subconjunto")
+
 func resetar_conjunto() -> void:
 	meu_conjunto.clear()
 	meu_conjunto.append(UNIVERSO.pick_random())
 	atualizar_visual()
 	print("🔄 Bolinha resetada: ", conjunto_para_texto(meu_conjunto))
 
-# Botão clicado → só muda qual operação está selecionada
+# Botão clicado ou Tecla pressionada → muda a operação selecionada
 func _on_mudou_poder(novo_poder: String) -> void:
 	poder_ativo = novo_poder
 	print("🔵 Operação selecionada: ", poder_ativo)
