@@ -49,6 +49,14 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 
+[node name="BotaoPularTudo" type="Button" parent="." unique_id=1327917339]
+layout_mode = 0
+offset_left = 1009.0
+offset_top = 34.0
+offset_right = 1123.0
+offset_bottom = 65.0
+text = "Pular História"
+
 [node name="BtnPular" type="Button" parent="." unique_id=1164008216]
 unique_name_in_owner = true
 layout_mode = 0
@@ -60,3 +68,5 @@ offset_bottom = 104.0
 [node name="MusicaFundoIntroducao" type="AudioStreamPlayer2D" parent="." unique_id=1702738477]
 stream = ExtResource("2_y1wcb")
 autoplay = true
+
+[connection signal="pressed" from="BotaoPularTudo" to="." method="_on_botao_pular_tudo_pressed"]
