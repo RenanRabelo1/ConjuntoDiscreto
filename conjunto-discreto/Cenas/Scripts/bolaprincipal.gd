@@ -1,4 +1,6 @@
 extends CharacterBody2D
+# Damos um nome para a classe para que outros scripts consigam ler a memória dela
+class_name BolinhaPrincipal
 
 # --- VARIÁVEIS E NÓS ---
 @export var speed: float = 300.0
@@ -7,9 +9,12 @@ const SIMBOLOS  = {"estrela": "★", "quadrado": "■", "triangulo": "▲"}
 
 var meu_conjunto: Array = []
 var poder_ativo: String = "uniao"
-
-# Controla se a bolinha pode se mover ou está pausada para pensar
 var pode_mover: bool = true
+
+# --- VARIÁVEIS DO CRONÔMETRO ---
+static var tempo_final: String = "00:00" # Memória global que a tela final vai ler
+var tempo_decorrido: float = 0.0
+var cronometro_ativo: bool = true
 
 @onready var sprite_estrela   = $Formas/Estrela
 @onready var sprite_quadrado  = $Formas/Quadrado
@@ -26,7 +31,6 @@ func _ready() -> void:
 	else:
 		print("❌ UI não encontrada")
 
-# --- DETECÇÃO DO TECLADO (INPUT MAP) ---
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("uniao"):
 		_on_mudou_poder("uniao")
@@ -38,32 +42,27 @@ func _unhandled_input(event: InputEvent) -> void:
 		_on_mudou_poder("complemento")
 	elif event.is_action_pressed("subconjunto"):
 		_on_mudou_poder("subconjunto")
-	
-	# --- BOTÃO ÚNICO DE ALTERNAR PAUSA (ESPAÇO) ---
 	elif event.is_action_pressed("parar"):
-		pode_mover = not pode_mover # Inverte o estado (true vira false, false vira true)
-		
-		if pode_mover:
-			print("🟢 Movimento liberado. Seguindo o mouse...")
-		else:
-			print("🛑 Movimento pausado. Hora de pensar!")
+		pode_mover = not pode_mover
+
 
 func resetar_conjunto() -> void:
 	meu_conjunto.clear()
 	meu_conjunto.append(UNIVERSO.pick_random())
 	atualizar_visual()
-	print("🔄 Bolinha resetada: ", conjunto_para_texto(meu_conjunto))
 
-# Botão clicado ou Tecla pressionada → muda a operação selecionada
 func _on_mudou_poder(novo_poder: String) -> void:
 	poder_ativo = novo_poder
-	print("🔵 Operação selecionada: ", poder_ativo)
-	# Avisa a UI para destacar o botão ativo
 	if ui:
 		ui.destacar_botao(poder_ativo)
 
 func _physics_process(_delta: float) -> void:
-	# Se estiver pausado, zera a velocidade e ignora o resto do movimento
+	# --- CONTADOR DO CRONÔMETRO ---
+	if cronometro_ativo:
+		tempo_decorrido += _delta
+		if has_node("Camera2D/LabelTempo"):
+			$Camera2D/LabelTempo.text = obter_tempo_formatado()
+
 	if not pode_mover:
 		velocity = Vector2.ZERO
 		return
@@ -76,22 +75,17 @@ func _physics_process(_delta: float) -> void:
 	else:
 		velocity = Vector2.ZERO
 
-# Chamado pelo outro_conjunto ao colidir → aplica operação selecionada
-func interacao(outro_conjunto: Array) -> void:
-	print("=== COLISÃO ===")
-	print("A = ", conjunto_para_texto(meu_conjunto))
-	print("B = ", conjunto_para_texto(outro_conjunto))
-	print("Operação: ", poder_ativo)
+# Transforma segundos puros em texto no formato "00:00"
+func obter_tempo_formatado() -> String:
+	var minutos: int = int(tempo_decorrido) / 60
+	var segundos: int = int(tempo_decorrido) % 60
+	return "%02d:%02d" % [minutos, segundos]
 
+func interacao(outro_conjunto: Array) -> void:
 	if ui:
 		ui.feedback_operacao(poder_ativo, meu_conjunto, outro_conjunto)
-
 	aplicar_operacao(outro_conjunto)
 	atualizar_visual()
-
-	print("Resultado: ", conjunto_para_texto(meu_conjunto))
-	print("===============")
-
 	await get_tree().create_timer(0.9).timeout
 	if ui:
 		ui.verificar_igualdade(meu_conjunto)
@@ -102,28 +96,24 @@ func aplicar_operacao(outro: Array) -> void:
 			for forma in outro:
 				if not meu_conjunto.has(forma):
 					meu_conjunto.append(forma)
-
 		"interseccao":
 			var lista = []
 			for forma in meu_conjunto:
 				if outro.has(forma):
 					lista.append(forma)
 			meu_conjunto = lista
-
 		"diferenca":
 			var novo = []
 			for e in meu_conjunto:
 				if not outro.has(e):
 					novo.append(e)
 			meu_conjunto = novo
-
 		"complemento":
 			var novo = []
 			for e in UNIVERSO:
 				if not meu_conjunto.has(e):
 					novo.append(e)
 			meu_conjunto = novo
-
 		"subconjunto":
 			var ok = true
 			for e in meu_conjunto:
@@ -134,8 +124,7 @@ func aplicar_operacao(outro: Array) -> void:
 				ui.feedback_subconjunto(meu_conjunto, outro, ok)
 
 func conjunto_para_texto(conjunto: Array) -> String:
-	if conjunto.is_empty():
-		return "{ ∅ }"
+	if conjunto.is_empty(): return "{ ∅ }"
 	var s = []
 	for e in conjunto:
 		s.append(SIMBOLOS.get(e, e))
@@ -144,4 +133,4 @@ func conjunto_para_texto(conjunto: Array) -> String:
 func atualizar_visual() -> void:
 	sprite_estrela.visible   = meu_conjunto.has("estrela")
 	sprite_quadrado.visible  = meu_conjunto.has("quadrado")
-	sprite_triangulo.visible = meu_conjunto.has("triangulo") 
+	sprite_triangulo.visible = meu_conjunto.has("triangulo")
