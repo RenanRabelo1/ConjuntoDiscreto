@@ -54,5 +54,13 @@ text = "SAIR DO JOGO"
 stream = ExtResource("4_sron7")
 autoplay = true
 
+[node name="LabelTempoFinal" type="Label" parent="." unique_id=1606653856]
+offset_left = 488.0
+offset_top = 324.0
+offset_right = 668.0
+offset_bottom = 363.0
+theme_override_font_sizes/font_size = 28
+text = "Tempo: 00:00"
+
 [connection signal="pressed" from="JogarNovamente" to="." method="_on_jogar_novamente_pressed"]
 [connection signal="pressed" from="Sair" to="." method="_on_sair_pressed"]
