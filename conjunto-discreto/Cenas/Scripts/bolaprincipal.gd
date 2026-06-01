@@ -52,7 +52,13 @@ func resetar_conjunto() -> void:
 	atualizar_visual()
 
 func _on_mudou_poder(novo_poder: String) -> void:
-	poder_ativo = novo_poder
+	# Se apertou o botão que já está ativo, desativa tudo
+	if poder_ativo == novo_poder:
+		poder_ativo = ""
+	# Se for um botão diferente, ativa o novo poder
+	else:
+		poder_ativo = novo_poder
+		
 	if ui:
 		ui.destacar_botao(poder_ativo)
 
@@ -84,6 +90,10 @@ func obter_tempo_formatado() -> String:
 	return "%02d:%02d" % [minutos, segundos]
 
 func interacao(outro_conjunto: Array) -> void:
+	# Trava de segurança: se não tem poder ativo, bate e não faz nada
+	if poder_ativo == "":
+		return
+		
 	if ui:
 		ui.feedback_operacao(poder_ativo, meu_conjunto, outro_conjunto)
 	aplicar_operacao(outro_conjunto)
