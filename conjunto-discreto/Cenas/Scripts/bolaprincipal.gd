@@ -60,8 +60,11 @@ func _physics_process(_delta: float) -> void:
 	# --- CONTADOR DO CRONÔMETRO ---
 	if cronometro_ativo:
 		tempo_decorrido += _delta
+		# Salva o tempo atual diretamente no Global
+		Global.tempo_final = obter_tempo_formatado()
+		
 		if has_node("Camera2D/LabelTempo"):
-			$Camera2D/LabelTempo.text = obter_tempo_formatado()
+			$Camera2D/LabelTempo.text = Global.tempo_final
 
 	if not pode_mover:
 		velocity = Vector2.ZERO
@@ -74,7 +77,6 @@ func _physics_process(_delta: float) -> void:
 		move_and_slide()
 	else:
 		velocity = Vector2.ZERO
-
 # Transforma segundos puros em texto no formato "00:00"
 func obter_tempo_formatado() -> String:
 	var minutos: int = int(tempo_decorrido) / 60

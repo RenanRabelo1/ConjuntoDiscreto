@@ -37,7 +37,7 @@ func _ready() -> void:
 		if btn:
 			var poder = botoes[nome]
 			btn.pressed.connect(func(): 
-				tocar_som_clique() # Chama a função de som
+				tocar_som_clique()
 				destacar_botao(poder)
 				mudou_poder.emit(poder)
 			)
@@ -46,7 +46,6 @@ func _ready() -> void:
 	gerar_nova_missao()
 	atualizar_label_pontos()
 
-# --- NOVA FUNÇÃO PARA O SOM ---
 func tocar_som_clique():
 	if som_botoes_ui:
 		som_botoes_ui.play()
@@ -104,11 +103,11 @@ func feedback_subconjunto(conj_a: Array, conj_b: Array, resultado: bool) -> void
 func verificar_igualdade(meu_conjunto: Array) -> void:
 	if not pode_interagir: return
 	var iguais = meu_conjunto.size() == conjunto_alvo.size()
-	if iguais:
-		for e in meu_conjunto:
-			if not conjunto_alvo.has(e):
-				iguais = false
-				break
+	for e in meu_conjunto:
+		if not conjunto_alvo.has(e):
+			iguais = false
+			break
+			
 	if iguais:
 		missoes_completas += 1
 		if som_vitoria: som_vitoria.play()
@@ -117,6 +116,7 @@ func verificar_igualdade(meu_conjunto: Array) -> void:
 		atualizar_label_pontos()
 		pode_interagir = false
 		await get_tree().create_timer(2.0).timeout
+		
 		if missoes_completas >= total_missoes:
 			get_tree().change_scene_to_file("res://Cenas/fim_de_jogo.tscn")
 		else:

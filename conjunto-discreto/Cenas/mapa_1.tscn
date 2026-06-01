@@ -35,6 +35,9 @@ offset_right = 10.0
 offset_bottom = -47.0
 
 [node name="Control" parent="bolaprincipal/Camera2D" unique_id=1891966967 instance=ExtResource("5_on0bv")]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
 
 [node name="MusicaFundoMapa" type="AudioStreamPlayer2D" parent="." unique_id=1465740693]
 stream = ExtResource("7_567v3")
