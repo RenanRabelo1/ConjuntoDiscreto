@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://bkl2glaq5jo2b"]
+
+[ext_resource type="Script" uid="uid://hyt0wcbgkfgf" path="res://Cenas/Scripts/area_2d.gd" id="1_ntml4"]
+[ext_resource type="Texture2D" uid="uid://dr7qfsufpxraf" path="res://Assets/Símbolos/Círculo (Bolinha)/Cópia de Cópia de Pan_Blue_Circle.png" id="2_oxe18"]
+[ext_resource type="Texture2D" uid="uid://dadvgya7vvfha" path="res://Assets/Símbolos/Triângulo/Cópia de image-removebg-preview (1).png" id="3_oxe18"]
+[ext_resource type="Texture2D" uid="uid://coihcc848hby6" path="res://Assets/Símbolos/Estrela/Cópia de Estrela 3.png" id="4_3v1yd"]
+[ext_resource type="Texture2D" uid="uid://d3lg06u6f56ah" path="res://Assets/Símbolos/Quadrado/large-green-square_1f7e9.png" id="5_oxe18"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wxx78"]
+radius = 94.04786
+
+[node name="outro_conjunto" type="Area2D" unique_id=1546861605]
+script = ExtResource("1_ntml4")
+
+[node name="Circulo" type="Sprite2D" parent="." unique_id=1566913473]
+scale = Vector2(0.14, 0.14)
+texture = ExtResource("2_oxe18")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2135571821]
+scale = Vector2(0.5, 0.5)
+shape = SubResource("CircleShape2D_wxx78")
+
+[node name="Formas" type="Node2D" parent="." unique_id=1822748577]
+position = Vector2(0, -3)
+
+[node name="Triangulo" type="Sprite2D" parent="Formas" unique_id=238378928]
+position = Vector2(-9.000001, 2)
+scale = Vector2(0.027153863, 0.024479164)
+texture = ExtResource("3_oxe18")
+
+[node name="Estrela" type="Sprite2D" parent="Formas" unique_id=980753694]
+position = Vector2(1.1920929e-07, -12)
+scale = Vector2(0.010314941, 0.009063721)
+texture = ExtResource("4_3v1yd")
+
+[node name="Quadrado" type="Sprite2D" parent="Formas" unique_id=1740918874]
+position = Vector2(11.000001, 1.0000001)
+scale = Vector2(0.017079256, 0.017212545)
+texture = ExtResource("5_oxe18")

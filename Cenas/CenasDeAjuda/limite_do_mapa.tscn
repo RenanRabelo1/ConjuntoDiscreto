@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://dbx3tbwcou61y"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_l1vnu"]
+a = Vector2(-4, 1)
+b = Vector2(1152, 1)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_jouq0"]
+a = Vector2(1074, 626)
+b = Vector2(1076, -22)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_cvbl2"]
+a = Vector2(0, 2)
+b = Vector2(-1, 646)
+
+[node name="LimiteDoMapa" type="RigidBody2D" unique_id=804649947]
+mass = 0.001
+gravity_scale = 0.0
+
+[node name="Baixo" type="CollisionShape2D" parent="." unique_id=1961206831]
+modulate = Color(0, 0.5137255, 1, 1)
+self_modulate = Color(0, 0.5137255, 1, 1)
+light_mask = 2
+position = Vector2(0, 644)
+shape = SubResource("SegmentShape2D_l1vnu")
+debug_color = Color(1, 1, 1, 0.41960785)
+
+[node name="Cima" type="CollisionShape2D" parent="." unique_id=1791892056]
+light_mask = 2
+shape = SubResource("SegmentShape2D_l1vnu")
+
+[node name="Direita" type="CollisionShape2D" parent="." unique_id=1367123634]
+light_mask = 2
+position = Vector2(76, 22)
+shape = SubResource("SegmentShape2D_jouq0")
+
+[node name="Esquerda" type="CollisionShape2D" parent="." unique_id=1636213332]
+light_mask = 2
+shape = SubResource("SegmentShape2D_cvbl2")
+
+[node name="Line2D" type="Line2D" parent="." unique_id=300558652]
+position = Vector2(8.961273, 0)
+scale = Vector2(0.99225473, 1)
+points = PackedVector2Array(0, 0, 1152, 0, 1152, 648, 0, 648)
+closed = true
+width = 5.0
+default_color = Color(0.015350181, 0.036593817, 0.1529871, 1)

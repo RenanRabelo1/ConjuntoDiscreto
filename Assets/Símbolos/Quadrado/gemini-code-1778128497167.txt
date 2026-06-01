@@ -1,0 +1,81 @@
+extends Control
+
+const PAGINAS_INTRO = [
+	{
+		"titulo": "Laboratório UNIFOR: Setor Omega",
+		"texto": "Bem-vindo ao simulador avançado da UNIFOR.\n\nNeste ambiente virtual, pesquisamos o comportamento de organismos sintéticos através da aplicação direta de lógicas matemáticas.",
+	},
+	{
+		"titulo": "Amoeba-Sigma e os Conjuntos",
+		"texto": "Você é o responsável por guiar a Amoeba-Sigma.\n\nO código genético deste organismo não é feito de DNA comum, mas sim estruturado puramente nas leis da Teoria dos Conjuntos, representado por formas geométricas.",
+	},
+	{
+		"titulo": "O Problema da Instabilidade",
+		"texto": "Atualmente, o conjunto genético da Amoeba está instável.\n\nPara que ela consiga evoluir, é necessário manipular seus elementos até que correspondam perfeitamente a um Conjunto Alvo pré-determinado.",
+	},
+	{
+		"titulo": "A Ferramenta de Modificação",
+		"texto": "Para alterar a estrutura da Amoeba, você deverá interagir com outras amostras pelo cenário e aplicar Operações de Conjuntos:\n\nUnião ( U ), Interseção ( ∩ ) e Diferença ( - ).",
+	},
+	{
+		"titulo": "Objetivo do Experimento",
+		"texto": "Analise com cuidado os elementos ao seu redor. Um erro matemático pode comprometer a amostra.\n\nEstabilize os conjuntos, atinja os objetivos e conclua as 5 etapas da pesquisa."
+	}
+]
+
+var pagina_atual: int = 0
+
+# Usando % para evitar erro de Null Instance!
+@onready var label_titulo  = %LabelTitulo
+@onready var label_texto   = %LabelTexto
+@onready var label_paginas = %LabelPaginas
+@onready var btn_anterior  = %BtnAnterior
+@onready var btn_proximo   = %BtnProximo
+@onready var btn_pular     = %BtnPular
+
+func _ready() -> void:
+	btn_proximo.pressed.connect(_on_btn_proximo_pressed)
+	btn_anterior.pressed.connect(_on_btn_anterior_pressed)
+	btn_pular.pressed.connect(_on_btn_pular_pressed)
+
+	# Organização visual direto pelo código
+	label_titulo.add_theme_font_size_override("font_size", 28)
+	label_titulo.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	
+	label_texto.add_theme_font_size_override("font_size", 18)
+	label_texto.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART # Faz o texto quebrar linha bonito
+	label_texto.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+
+	mostrar_pagina(0)
+
+func mostrar_pagina(index: int) -> void:
+	var p = PAGINAS_INTRO[index]
+
+	label_titulo.text  = p["titulo"]
+	label_texto.text   = p["texto"]
+	label_paginas.text = "Página: %d / %d" % [index + 1, PAGINAS_INTRO.size()]
+
+	label_titulo.add_theme_color_override("font_color", Color.CYAN)
+	label_texto.add_theme_color_override("font_color", Color.WHITE)
+
+	btn_anterior.visible = index > 0
+
+	if index == PAGINAS_INTRO.size() - 1:
+		btn_proximo.text = "Ir para o Tutorial"
+	else:
+		btn_proximo.text = "Próximo"
+
+func _on_btn_proximo_pressed() -> void:
+	if pagina_atual < PAGINAS_INTRO.size() - 1:
+		pagina_atual += 1
+		mostrar_pagina(pagina_atual)
+	else:
+		get_tree().change_scene_to_file("res://Cenas/tutorial.tscn")
+
+func _on_btn_anterior_pressed() -> void:
+	if pagina_atual > 0:
+		pagina_atual -= 1
+		mostrar_pagina(pagina_atual)
+
+func _on_btn_pular_pressed() -> void:
+	get_tree().change_scene_to_file("res://Cenas/mapa_1.tscn")
