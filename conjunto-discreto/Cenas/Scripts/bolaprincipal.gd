@@ -8,7 +8,7 @@ const SIMBOLOS  = {"estrela": "★", "quadrado": "■", "triangulo": "▲"}
 var meu_conjunto: Array = []
 var poder_ativo: String = "uniao"
 
-# Nova variável para controlar se a bolinha pode ou não seguir o mouse
+# Controla se a bolinha pode se mover ou está pausada para pensar
 var pode_mover: bool = true
 
 @onready var sprite_estrela   = $Formas/Estrela
@@ -39,13 +39,14 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event.is_action_pressed("subconjunto"):
 		_on_mudou_poder("subconjunto")
 	
-	# --- SISTEMA DE PAUSA DO MOVIMENTO ---
+	# --- BOTÃO ÚNICO DE ALTERNAR PAUSA (ESPAÇO) ---
 	elif event.is_action_pressed("parar"):
-		pode_mover = false
-		print("🛑 Movimento pausado. Hora de pensar!")
-	elif event.is_action_pressed("voltar"):
-		pode_mover = true
-		print("🟢 Movimento liberado. Seguindo o mouse...")
+		pode_mover = not pode_mover # Inverte o estado (true vira false, false vira true)
+		
+		if pode_mover:
+			print("🟢 Movimento liberado. Seguindo o mouse...")
+		else:
+			print("🛑 Movimento pausado. Hora de pensar!")
 
 func resetar_conjunto() -> void:
 	meu_conjunto.clear()
@@ -62,7 +63,7 @@ func _on_mudou_poder(novo_poder: String) -> void:
 		ui.destacar_botao(poder_ativo)
 
 func _physics_process(_delta: float) -> void:
-	# Se o interruptor estiver desligado, a velocidade zera e o código para aqui
+	# Se estiver pausado, zera a velocidade e ignora o resto do movimento
 	if not pode_mover:
 		velocity = Vector2.ZERO
 		return
@@ -98,13 +99,11 @@ func interacao(outro_conjunto: Array) -> void:
 func aplicar_operacao(outro: Array) -> void:
 	match poder_ativo:
 		"uniao":
-			# A ∪ B: ganha os elementos que B tem e A não tem
 			for forma in outro:
 				if not meu_conjunto.has(forma):
 					meu_conjunto.append(forma)
 
 		"interseccao":
-			# A ∩ B: fica só com o que os dois têm em comum
 			var lista = []
 			for forma in meu_conjunto:
 				if outro.has(forma):
@@ -112,7 +111,6 @@ func aplicar_operacao(outro: Array) -> void:
 			meu_conjunto = lista
 
 		"diferenca":
-			# A − B: perde o que B também tem
 			var novo = []
 			for e in meu_conjunto:
 				if not outro.has(e):
@@ -120,7 +118,6 @@ func aplicar_operacao(outro: Array) -> void:
 			meu_conjunto = novo
 
 		"complemento":
-			# Aᶜ: inverte dentro do universo {★,■,▲}
 			var novo = []
 			for e in UNIVERSO:
 				if not meu_conjunto.has(e):
@@ -128,7 +125,6 @@ func aplicar_operacao(outro: Array) -> void:
 			meu_conjunto = novo
 
 		"subconjunto":
-			# A ⊆ B: só verifica, não muda nada
 			var ok = true
 			for e in meu_conjunto:
 				if not outro.has(e):
@@ -148,4 +144,4 @@ func conjunto_para_texto(conjunto: Array) -> String:
 func atualizar_visual() -> void:
 	sprite_estrela.visible   = meu_conjunto.has("estrela")
 	sprite_quadrado.visible  = meu_conjunto.has("quadrado")
-	sprite_triangulo.visible = meu_conjunto.has("triangulo")
+	sprite_triangulo.visible = meu_conjunto.has("triangulo") 
