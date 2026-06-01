@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" format=3 uid="uid://tamavkn4eirg"]
+
+[ext_resource type="Texture2D" uid="uid://c6elfgtsxnrir" path="res://Assets/HUD/Gemini_Generated_Image_jzt81njzt81njzt8.png" id="1_45r80"]
+
+[resource]
+atlas = ExtResource("1_45r80")
+region = Rect2(423.99512, 30.95346, 387.34497, 337.97754)
