@@ -78,3 +78,7 @@ func _on_btn_anterior_pressed():
 
 func _on_btn_pular_pressed():
 	get_tree().change_scene_to_file("res://Cenas/mapa_1.tscn")
+
+
+func _on_botao_pular_tudo_pressed() -> void:
+	get_tree().change_scene_to_file("res://Cenas/mapa_1.tscn")
