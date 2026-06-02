@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://dm0klo4otvs1j"]
+
+[ext_resource type="Script" uid="uid://dlvnwafouacw4" path="res://Cenas/tutorial.gd" id="1_l2mwh"]
+[ext_resource type="AudioStream" uid="uid://cahll3twk32js" path="res://Assets/Audio/MusicaFundodoJogo.mp3" id="2_y0kkd"]
+
+[node name="Control" type="Control" unique_id=895398976]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_l2mwh")
+
+[node name="FundoColorido" type="ColorRect" parent="." unique_id=209741459]
+layout_mode = 0
+offset_right = 1182.0
+offset_bottom = 692.0
+color = Color(0.09880724, 0.19950393, 0.18433458, 1)
+
+[node name="VBox" type="VBoxContainer" parent="." unique_id=770565463]
+layout_mode = 0
+offset_left = 327.0
+offset_top = 154.0
+offset_right = 829.0
+offset_bottom = 688.0
+
+[node name="LabelIcone" type="Label" parent="VBox" unique_id=210474685]
+layout_mode = 2
+
+[node name="LabelTitulo" type="Label" parent="VBox" unique_id=1083608754]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="LabelTexto" type="Label" parent="VBox" unique_id=301517657]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HBoxBotoes" type="HBoxContainer" parent="VBox" unique_id=2055484330]
+layout_mode = 2
+
+[node name="BtnAnterior" type="Button" parent="VBox/HBoxBotoes" unique_id=1987943358]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="LabelPaginas" type="Label" parent="VBox/HBoxBotoes" unique_id=1971578078]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="BtnProximo" type="Button" parent="VBox/HBoxBotoes" unique_id=2121785826]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="BtnPular" type="Button" parent="." unique_id=1666093850]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 29.0
+offset_top = 81.0
+offset_right = 37.0
+offset_bottom = 104.0
+
+[node name="MusicaFundoTutorial" type="AudioStreamPlayer2D" parent="." unique_id=749689669]
+stream = ExtResource("2_y0kkd")
+autoplay = true
